@@ -661,7 +661,8 @@ where
             let joined = cwd.join(self);
 
             if !joined.is_absolute() {
-                Err(std::io::Error::other(
+                Err(std::io::Error::new(
+                    std::io::ErrorKind::Other,
                     "path cannot be absolutized without ambiguity",
                 ))
             } else {
